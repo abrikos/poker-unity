@@ -7,7 +7,7 @@ public class PlayerCards : MonoBehaviour
     void Start()
     {
         //GameObject.Find("PlayerCard1").GetComponent<Image>.sprite = GameObject.Find("AllCards").GetComponent<PokerCards>().spriteArray[12];
-        
+        // GameObject.Find("PlayerCard1").SetActive(false);
         Debug.Log(GameObject.Find("PlayerCard1").GetComponent<SpriteRenderer>().sprite);
     }
 
