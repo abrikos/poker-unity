@@ -11,8 +11,9 @@ public class PlayersInstantiation: MonoBehaviour
         Vector3 stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0));
         Debug.Log(stageDimensions);
         var parent = Instantiate(myPrefab, location, Quaternion.identity);
-        parent.transform.localPosition = new Vector3(-10, 2.5f, 4);
-        parent.transform.localScale = new Vector3(1, 1, 1);
+        parent.transform.localPosition = new Vector3(-stageDimensions.x, 0, 4);
+        Debug.Log(myPrefab.transform.localScale);
+        // parent.transform.localScale = myPrefab.transform.localScale;
         // parent.transform.SetParent(myPrefab.transform);
     }
 }
