@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCards : MonoBehaviour
+public class PlayerPlace : MonoBehaviour
 {
     void Start()
     {
@@ -12,7 +12,7 @@ public class PlayerCards : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update2()
     {
         if(Input.GetMouseButtonDown(0))
         {

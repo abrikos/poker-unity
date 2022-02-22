@@ -1,7 +1,7 @@
 using UnityEngine;
 using WebSocketSharp;
 
-public class MyWebSsocket : MonoBehaviour
+public class MyWebSocket : MonoBehaviour
 {
     private WebSocket _ws;
     private void Start()
