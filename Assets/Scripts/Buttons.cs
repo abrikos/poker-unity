@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour
 {
@@ -9,8 +12,16 @@ public class Buttons : MonoBehaviour
 	    Debug.Log("Hi");
     }
 
+	private static async Task SetTexture()
+	{
+		var tx = await MyWebRequest.Wr.GetRemoteTexture("https://www.gravatar.com/avatar/ac6d9001445d7245c83757179a650cf1?s=64&d=identicon&r=PG");
+		GameObject.Find("RawImage").GetComponent<RawImage>().texture = tx;
+	}
+
     public void onClick()
     {
+	    SetTexture();
+	    
 	    const string rand = "7H";
 	    const string rand2 = "QS";
 	    Debug.Log(GameObject.Find(rand));

@@ -17,14 +17,14 @@ public class PlayersList: MonoBehaviour
         // Vector3 stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0));
         // Debug.Log(stageDimensions);
         var parent = Instantiate(myPrefab, loc, Quaternion.identity);
-        parent.SetActive(true);
+        // parent.SetActive(true);
         parent.transform.SetParent (GameObject.Find("Canvas").transform, false);
         parent.name = "Player" + i;
         //parent.transform.localPosition = new Vector3(-stageDimensions.x, 0, 4);
         //parent.transform.localScale = new Vector3(0.01f,0.01f,1);
         var player = parent.transform;
-        player.Find("PlayerCard1").GetComponent<SpriteRenderer>().sortingOrder = 2;
-        player.Find("PlayerCard2").GetComponent<SpriteRenderer>().sortingOrder = 2;
+        player.Find("PlayerCard1").GetComponent<SpriteRenderer>().sortingOrder = -1;
+        player.Find("PlayerCard2").GetComponent<SpriteRenderer>().sortingOrder = -1;
         var text =player.Find("PlayerText").GetComponent<TMPro.TextMeshProUGUI>();
         text.text = "Screen.width.ToString()";
         // text.sortingOrder = 2;
@@ -39,5 +39,6 @@ public class PlayersList: MonoBehaviour
             var angle = i * Mathf.PI*2f / count;
             AddPlayer(i, angle);
         }
+        myPrefab.SetActive(false);
     }
 }
