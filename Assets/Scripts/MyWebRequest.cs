@@ -1,24 +1,12 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class MyWebRequest : MonoBehaviour
 {
     public static MyWebRequest Wr;
-
-    void Start()
-    {
-        Test();
-    }
-
-
-    async Task Test()
-    {
-        var text = await GetRemoteJson("https://api.minter.one/v2/net_info");
-        JObject json = JObject.Parse(text);
-        Debug.Log(json["peers"]);
-    }
     
     private void Awake()
     {
@@ -27,7 +15,7 @@ public class MyWebRequest : MonoBehaviour
     
     public async Task<Texture2D> GetRemoteTexture ( string url )
     {
-        Debug.Log("-----------------------");
+        Debug.Log("Request: Image" + url);
         using var www = UnityWebRequestTexture.GetTexture(url);
         // begin request:
         var asyncOp = www.SendWebRequest();
@@ -46,13 +34,14 @@ public class MyWebRequest : MonoBehaviour
         else
         {
             // return valid results:
+            Debug.Log("Request done");
             return DownloadHandlerTexture.GetContent(www);
         }
     }
 
     public async Task<string> GetRemoteJson ( string url )
     {
-        Debug.Log("-----------------------");
+        Debug.Log("Request JSON: " + url);
         using var www = UnityWebRequestTexture.GetTexture(url);
         // begin request:
         var asyncOp = www.SendWebRequest();
@@ -71,6 +60,7 @@ public class MyWebRequest : MonoBehaviour
         else
         {
             // return valid results:
+            Debug.Log("Request done");
             return www.downloadHandler.text;
         }
     }
